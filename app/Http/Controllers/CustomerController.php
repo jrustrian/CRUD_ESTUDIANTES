@@ -43,5 +43,33 @@ class CustomerController extends Controller
         return redirect()->route('customer-visualize')->with('success', 'Registro realizado exitosamente');
     }
 
+    public function delete($id)
+    {
+        Customer::find($id)->delete();
+        Session::flash('delete','Se ha eliminado correctamente');
+        return redirect()->route('customer-visualize');
 
+    }
+    public function edit($id)
+    {
+        $customer = Customer::findOrFail($id);
+        $categorys = Category::all();
+
+
+        return view('Customer.edit', compact('customer','categorys'));
+
+    }
+
+    public function update(UpdateCustomerRequest $request, $id)
+    {
+        $customer = Customer::findOrFail($id);
+        $customer->name = $request->name;
+        $customer->address = $request->address;
+        $customer->phone_number = $request->phone_number;
+        $customer->category_id = $request->category_id;
+
+        $customer->save();
+        Session::flash('update','Se ha actualizado correctamente');
+        return redirect()->route('customer-visualize');
+    }
 }

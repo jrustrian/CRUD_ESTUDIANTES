@@ -6,25 +6,32 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateCustomerRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
+
     public function rules()
     {
         return [
-            //
+
+            'name'=> 'required',
+            'address'=> 'required',
+            'phone_number'=> 'required',
+            'category_id'=> 'required',
+
+        ];
+
+    }
+    public function messages()
+    {
+        return [
+            'name.required' => 'El campo Nombre es obligatorio',
+            'address.required' => 'El campo Nombre es obligatorio',
+            'phone_number.required' => 'El campo Nombre es obligatorio',
+            'category.required' => 'El campo Nombre es obligatorio',
+
         ];
     }
 }

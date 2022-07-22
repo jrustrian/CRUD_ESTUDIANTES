@@ -32,13 +32,13 @@
 
 
                     <td>
-                        <form method="POST" action="#">
+                        <form method="POST" action="{{route('customer-delete', $customer->id)}}">
                             @csrf
                             @method('DELETE')
                             <button type="submit" onclick="return confirm('Estas Seguro?')"
                                     class="btn btn-danger">Eliminar</button>
                         </form>
-                        <form method="GET" action="#">
+                        <form method="GET" action="{{route('customer-edit', $customer->id)}}">
                             @csrf
                             @method('GET')
                             <button type="submit" class="btn btn-warning">Editar</button>
