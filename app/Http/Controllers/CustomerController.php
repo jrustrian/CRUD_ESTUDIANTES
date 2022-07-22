@@ -1,85 +1,47 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Requests\CrearCustomerRequest;
+use App\Http\Requests\UpdateCustomerRequest;
 use App\Models\Customer;
-use Illuminate\Http\Request;
+use App\Models\Category;
+use Illuminate\Support\Facades\DB;
+use Session;
 
 class CustomerController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+
+        $categorys = Category::all();
+        return view("Customer.create", compact('categorys'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function index()
     {
-        //
+        $customers = DB::table('customer')
+            ->join('category','category.id_category','=', 'customer.category_id')
+            ->select('customer.*','category.description as category_id')
+            ->get();
+
+        return view('customer.read', compact('customers'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Customer  $customer
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Customer $customer)
+    public function store(CrearCustomerRequest $request)
     {
-        //
+        $data = $request->all();
+
+        Customer::create([
+
+            'name' => $data['name'],
+            'address' => $data['address'],
+            'phone_number' => $data['phone_number'],
+            'category_id' => $data['category_id'],
+
+        ]);
+        Session::flash('save','Se ha registrado correctamente');
+        return redirect()->route('customer-visualize')->with('success', 'Registro realizado exitosamente');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Customer  $customer
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Customer $customer)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Customer  $customer
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Customer $customer)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Customer  $customer
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Customer $customer)
-    {
-        //
-    }
 }

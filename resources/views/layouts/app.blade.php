@@ -34,8 +34,8 @@
                     Cliente
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Agregar</a>
-                    <a class="dropdown-item" href="#">Visualizar</a>
+                    <a class="dropdown-item" href="{{route('customer-add')}}">Agregar</a>
+                    <a class="dropdown-item" href="{{route('customer-visualize')}}">Visualizar</a>
                 </div>
             </li>
 
