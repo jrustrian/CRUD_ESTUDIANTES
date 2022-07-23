@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.app1')
 
-@section('content')
+@section('contents')
 
     <form class="w-50 mx-auto mt-5 pt-5" action="{{ route('customer-update', $customer->id) }}" method="POST">
         @csrf

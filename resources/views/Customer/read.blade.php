@@ -1,7 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.app1')
 
-@section('content')
+@section('contents')
     @include('Messages.messages')
+    <h1></h1>
+
     <h3 class="my-1 text-center">Tabla de Clietes</h3>
     <div class="row col-12 justify-content-end mb-2 pr-0">
 

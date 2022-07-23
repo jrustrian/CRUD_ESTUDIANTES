@@ -1,7 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.app1')
 
-@section('content')
+@section('contents')
     @include('Messages.messages')
+    <h1></h1>
     <h3 class="my-1 text-center">Tabla de Categorias</h3>
     <div class="row col-12 justify-content-end mb-2 pr-0">
 
@@ -28,12 +29,13 @@
                             @method('DELETE')
                             <button type="submit" onclick="return confirm('Estas Seguro?')"
                                     class="btn btn-danger">Eliminar</button>
-                        </form>
-                        <form method="GET" action="{{ route('category-edit', $category->id_category) }}">
+                        </form> <form method="GET" action="{{ route('category-edit', $category->id_category) }}">
                             @csrf
                             @method('GET')
                             <button type="submit" class="btn btn-warning">Editar</button>
                         </form>
+
+
                     </td>
                 </tr>
             @endforeach
