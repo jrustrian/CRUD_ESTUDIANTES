@@ -16,6 +16,18 @@ class CustomerController extends Controller
         return response()->json($customers);
 
     }
+    public function deleteCustomer($id){
+        $customer= $this->getCustomer($id);
+        $customer->delete();
+        return $customer;
+    }
+
+    public function getCustomer($id)
+    {
+        $customer = Customer::find($id);
+        return $customer;
+    }
+
 
     public function create()
     {

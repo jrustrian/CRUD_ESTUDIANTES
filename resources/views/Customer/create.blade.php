@@ -19,6 +19,8 @@
             <label for="address">Direccion</label>
             <input type="text" class="form-control {{$errors->has('address')? 'is-invalid':''}}" name="address" id="address"
                    value="{{isset($customer->address)?$customer->address:old('address') }}" >
+            <input type="hidden" name="control" value="form">
+
         </div>
 
 
