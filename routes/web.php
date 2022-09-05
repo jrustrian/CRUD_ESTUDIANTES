@@ -26,3 +26,7 @@ Route::prefix('Cliente')->group(function () {
     Route::get('/editar/{id}', [CustomerController::class, 'edit'])->name('customer-edit');
     Route::PUT('/actualizar/{id}', [CustomerController::class, 'update'])->name('customer-update');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

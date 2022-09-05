@@ -1,7 +1,7 @@
-@extends('layouts.app1')
+@extends('layouts.app')
 
 
-@section('contents')
+@section('content')
 
     <form class="w-50 mx-auto mt-5 pt-5" action="{{ route('customer-create') }}" method="POST">
         @csrf

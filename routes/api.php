@@ -17,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('customersprueba', [App\Http\Controllers\CustomerController::class, 'getAll'])->name('api-getAll');
+Route::put('save-customer', [App\Http\Controllers\CustomerController::class, 'store'])->name('api-saveProduct');

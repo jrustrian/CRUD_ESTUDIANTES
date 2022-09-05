@@ -1,6 +1,6 @@
-@extends('layouts.app1')
+@extends('layouts.app')
 
-@section('contents')
+@section('content')
     @include('Messages.messages')
     <h1></h1>
 
@@ -18,6 +18,7 @@
                 <th scope="col">Actualizacion</th>
                 <th scope="col">Categoria</th>
 
+                <th scope="col">Opciones</th>
                 <th scope="col">Opciones</th>
             </tr>
             </thead>
@@ -40,11 +41,15 @@
                             <button type="submit" onclick="return confirm('Estas Seguro?')"
                                     class="btn btn-danger">Eliminar</button>
                         </form>
+
+                    </td>
+                    <td>
                         <form method="GET" action="{{route('customer-edit', $customer->id)}}">
                             @csrf
                             @method('GET')
                             <button type="submit" class="btn btn-warning">Editar</button>
                         </form>
+
                     </td>
                 </tr>
             @endforeach

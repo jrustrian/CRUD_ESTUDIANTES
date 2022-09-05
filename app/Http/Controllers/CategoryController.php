@@ -25,8 +25,7 @@ class CategoryController extends Controller
             'description' => $data['description'],
 
         ]);
-        Session::flash('save','Se ha registrado correctamente');
-        return redirect()->route('category-add');
+
     }
 
     public function index()

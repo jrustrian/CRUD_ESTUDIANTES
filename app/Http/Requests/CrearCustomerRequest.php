@@ -28,9 +28,9 @@ class CrearCustomerRequest extends FormRequest
     {
         return [
             'name.required' => 'El campo Nombre es obligatorio',
-            'address.required' => 'El campo Nombre es obligatorio',
-            'phone_number.required' => 'El campo Nombre es obligatorio',
-            'category.required' => 'El campo Nombre es obligatorio',
+            'address.required' => 'El campo Direccion es obligatorio',
+            'phone_number.required' => 'El campo Numero de Telefono es obligatorio',
+            'category.required' => 'El campo categoria es obligatorio',
 
         ];
     }

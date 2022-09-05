@@ -1,6 +1,6 @@
-@extends('layouts.app1')
+@extends('layouts.app')
 
-@section('contents')
+@section('content')
 
     @include('Messages.messages')
 

@@ -9,7 +9,14 @@ use Illuminate\Support\Facades\DB;
 use Session;
 
 class CustomerController extends Controller
+
 {
+    public function getAll(){
+        $customers = Customer::all();
+        return response()->json($customers);
+
+    }
+
     public function create()
     {
 
@@ -40,8 +47,15 @@ class CustomerController extends Controller
 
         ]);
         Session::flash('save','Se ha registrado correctamente');
-        return redirect()->route('customer-visualize')->with('success', 'Registro realizado exitosamente');
+        if($request->control=='form'){
+            return redirect()->route('customer-visualize')->with('success', 'Registro realizado exitosamente');
+        }elseif($request->control=='api'){
+            return response()->json([
+                'codigo' => '1',
+                'descripcion' => 'Guardado Exitosamente',
+            ]);
     }
+        }
 
     public function delete($id)
     {
