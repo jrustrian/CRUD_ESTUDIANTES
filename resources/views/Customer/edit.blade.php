@@ -17,6 +17,7 @@
         <div class="form-group">
             <label for="address">Direccion</label>
             <input type="text" class="form-control" name="address" id="address" value="{{$customer->address}}" >
+            <input type="hidden" name="control" value="form">
         </div>
 
 

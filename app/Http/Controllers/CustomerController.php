@@ -7,6 +7,7 @@ use App\Models\Customer;
 use App\Models\Category;
 use Illuminate\Support\Facades\DB;
 use Session;
+use Illuminate\Http\Request;
 
 class CustomerController extends Controller
 
@@ -25,6 +26,11 @@ class CustomerController extends Controller
     public function getCustomer($id)
     {
         $customer = Customer::find($id);
+        return $customer;
+    }
+    public function editCustomer($id, Request $request){
+        $customer = $this->getCustomer($id);
+        $customer->fill($request->all())->save();
         return $customer;
     }
 
@@ -96,6 +102,16 @@ class CustomerController extends Controller
 
         $customer->save();
         Session::flash('update','Se ha actualizado correctamente');
-        return redirect()->route('customer-visualize');
+
+        if($request->control=='form'){
+            return redirect()->route('customer-visualize')->with('success', 'Registro realizado exitosamente');
+        }elseif($request->control=='api'){
+            return response()->json([
+                'codigo' => '1',
+                'descripcion' => 'Guardado Exitosamente',
+            ]);
+        }
     }
+
+
 }
